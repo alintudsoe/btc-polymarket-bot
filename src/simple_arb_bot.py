@@ -463,6 +463,9 @@ async def main():
     settings = load_settings()
 
     print("API KEY:", settings.api_key)
+    print("api_secret:", settings.api_secret)
+    print("api_passphrase:", settings.api_passphrase)
+    print("private_key:", settings.private_key)
     
     # Validar configuración
     if not settings.private_key:
