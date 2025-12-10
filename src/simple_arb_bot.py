@@ -190,8 +190,6 @@ class SimpleArbitrageBot:
         if total_cost < self.settings.target_pair_cost:
             profit = 1.0 - total_cost
             profit_pct = (profit / total_cost) * 100
-
-            print("API KEY:", settings.api_key)
             
             # Calcular con el tamaño de orden
             investment = total_cost * self.settings.order_size
@@ -463,6 +461,8 @@ async def main():
     
     # Cargar configuración
     settings = load_settings()
+
+    print("API KEY:", settings.api_key)
     
     # Validar configuración
     if not settings.private_key:
