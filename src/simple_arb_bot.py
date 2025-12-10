@@ -239,17 +239,17 @@ class SimpleArbitrageBot:
             self.positions.append(opportunity)
             return
         
-        # Verificar balance antes de ejecutar (con 20% margen de seguridad)
+        # Verificar balance antes de ejecutar (con 5% margen de seguridad)
         logger.info("\nVerificando balance...")
         current_balance = self.get_balance()
-        required_balance = opportunity['total_investment'] * 1.2  # 20% safety margin
+        required_balance = opportunity['total_investment'] * 1.05  # 5% safety margin
         
         logger.info(f"Balance disponible: ${current_balance:.2f}")
-        logger.info(f"Requerido (+ 20% margen): ${required_balance:.2f}")
+        logger.info(f"Requerido (+ 5% margen): ${required_balance:.2f}")
         
         if current_balance < required_balance:
             logger.error(f"❌ Balance insuficiente: necesitas ${required_balance:.2f} pero tienes ${current_balance:.2f}")
-            logger.error("Se requiere 20% extra como margen de seguridad para evitar fallos a mitad de ejecución")
+            logger.error("Se requiere 5% extra como margen de seguridad para evitar fallos a mitad de ejecución")
             logger.error("No se ejecutará el arbitraje")
             return
         
